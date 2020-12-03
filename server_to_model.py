@@ -20,7 +20,7 @@ print(str(addr),'Success Connection\n')
 
 def send(sock):
 	sendData = input('>>>') #임시로 테스트를 위해 서버측에서 데이터를 콘솔로 입력하는 부분
-	sock.send(sendData.encode())
+	sock.send(sendData.encode('utf-8'))
 	
 def receive(sock):
 	recvData = sock.recv(BUF_SIZE)
