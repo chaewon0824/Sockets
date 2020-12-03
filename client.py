@@ -18,5 +18,5 @@ def receive(sock):
 	
 
 while True: #클라이언트측 반복부분
-  send(connectionSock)
+  	send(connectionSock)
 	receive(connectionSock)
