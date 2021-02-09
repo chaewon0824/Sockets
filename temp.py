@@ -41,11 +41,11 @@ def messageSend(methods=['POST']):
     print('message is send!!!')
 
 @socketio.on('my event') #모델에게 메세지 보내기
-def handle_my_custom_event(req1(), methods=['POST']):
+def handle_my_custom_event_send(req1(), methods=['POST']):
     socketio.emit("my response", req1(), callback=messageSend) 
 
 @socketio.on('my event') #모델에게 메세지 받기
-def handle_my_custom_event(json, methods=['POST']):
+def handle_my_custom_event_receive(json, methods=['POST']):
     print('Model: ' + str(json))
     return json #여기서 매직미러가 답을 받아가길 원함...
 
