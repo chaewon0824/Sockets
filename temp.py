@@ -31,21 +31,26 @@ def test():
 '''
 
 @app.route("/chatbot",methods=['POST']) 
-def req1():
+def req1(): #매직미러에게 메세지 받기
   data = request.json
   sentence = data['sentence']
   #print (sentence)
   return sentence
 
-def messageReceived(methods=['POST']):
-    print('message was received!!!')
+def messageSend(methods=['POST']):
+    print('message is send!!!')
 
 @socketio.on('my event') #모델에게 메세지 보내기
+def handle_my_custom_event(req1(), methods=['POST']):
+    socketio.emit("my response", req1(), callback=messageSend) 
+
+@socketio.on('my event') #모델에게 메세지 받기
 def handle_my_custom_event(json, methods=['POST']):
-    print('received my event: ' + str(json))
-    socketio.emit(req1(), json, callback=messageReceived)
+    print('Model: ' + str(json))
+    return json #여기서 매직미러가 답을 받아가길 원함...
 
 
+    
 @app.route("/example")
 def example():
   return render_template("example.html")
