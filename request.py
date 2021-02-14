@@ -43,10 +43,10 @@ def test():
 #매직미러에게 메세지 받아 챗봇에게 전송하는 API
 @app.route("/chatbot",methods=['POST']) 
 def req1(): 
-  data = request.json
+  data = request.json #받고
   sentence = data['sentence']
-  ret = get_answer(sentence)
-  return jsonify(ret)
+  ret = get_answer(sentence) #챗봇에게 전송하는 함수
+  return jsonify(ret) #매직미러가 다시 받아 갈 부분
 
    
 @app.route("/example")
