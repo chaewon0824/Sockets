@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,Response
 import json,jsonify
 import socket
 
-HOST = '0.0.0.0'
+HOST = '127.0.0.1'
 PORT =  7777
 BUF_SIZE = 128
 
