@@ -23,15 +23,12 @@ BUF_SIZE = 128
 
 
 s_sock = socket(AF_INET,SOCK_STREAM)
-s_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+#s_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 print("Model Socket Server bind")
 s_sock.bind((HOST,PORT))
 s_sock.listen()
 connectionSock, addr = s_sock.accept()
 print (str(addr),'Success Connection\n') 
-
-#c_sock = socket(AF_INET, SOCK_STREAM)
-#c_sock.connect((HOST,PORT))
 
 
 class LocalHumanAgent(Agent):    
@@ -72,7 +69,6 @@ class LocalHumanAgent(Agent):
         return self.finished
 
     def observe(self, msg):
-       # time.sleep(2)
         print ("observe!!!!!!!!!!!!!!!!!\n")
         msg = display_messages(
                 [msg],
