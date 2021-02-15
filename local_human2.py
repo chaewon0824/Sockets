@@ -79,7 +79,7 @@ class LocalHumanAgent(Agent):
         
         try:
          print("@##@@@@")
-         sendByteLen = connectionSock.sendall(msg.encode('utf-8')) #서버로 데이터 보내기
+         sendByteLen = connectionSock.send(msg.encode('utf-8')) #서버로 데이터 보내기
          print(sendByteLen)
         except IOError:
           print ("@")
