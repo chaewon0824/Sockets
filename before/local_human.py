@@ -17,18 +17,7 @@ from socket import *
 #import time
 
 
-HOST = '127.0.0.1'
-PORT =  7777
-BUF_SIZE = 128
 
-
-s_sock = socket(AF_INET,SOCK_STREAM)
-s_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-print("Model Socket Server bind")
-s_sock.bind((HOST,PORT))
-s_sock.listen()
-connectionSock, addr = s_sock.accept()
-print (str(addr),'Success Connection\n') 
 
 #c_sock = socket(AF_INET, SOCK_STREAM)
 #c_sock.connect((HOST,PORT))
@@ -61,6 +50,22 @@ class LocalHumanAgent(Agent):
         self.episodeDone = False
         self.finished = False
         self.fixedCands_txt = load_cands(self.opt.get('local_human_candidates_file'))
+        
+        HOST = '127.0.0.1'
+        PORT =  7777
+        BUF_SIZE = 128
+
+
+        s_sock = socket(AF_INET,SOCK_STREAM)
+        s_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+        print("Model Socket Server bind")
+        s_sock.bind((HOST,PORT))
+        s_sock.listen()
+        connectionSock, addr = s_sock.accept()
+        print (str(addr),'Success Connection\n') 
+       
+        
+        
         print(
             colorize(
                 "Enter [DONE] if you want to end the episode, [EXIT] to quit.",
